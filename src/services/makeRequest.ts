@@ -6,9 +6,6 @@ import {TMakeRequestDefaultArgs} from "../types/services";
 
 
 
-
-
-
 const makeRequest = <T extends Method>(arg: CorrectRequest<T>): Promise<any> => {
     const {url, method, body}: TMakeRequestDefaultArgs = {...arg}
 
