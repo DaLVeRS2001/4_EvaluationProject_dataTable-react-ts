@@ -5,7 +5,7 @@ import {
 } from "../../types/reducerTypes/dataTable";
 
 const initialState: IDataTableState = {
-    tableDate: {
+    tableDataOne: {
         date: {
             number: '',
             date: new Date()
@@ -20,7 +20,7 @@ const initialState: IDataTableState = {
         },
         status: ''
     },
-    tableDates: []
+    tableData: []
 }
 
 const dataTableReducer = (
@@ -30,13 +30,13 @@ const dataTableReducer = (
         case DataTableActionTypes.TABLE_DATES:
             return {
                 ...state,
-                tableDates: [...action.payload]
+                tableData: [...action.payload]
             }
         case DataTableActionTypes.CHANGE_FIELD:
             return {
                 ...state,
-                tableDate: {
-                    ...state.tableDate,
+                tableDataOne: {
+                    ...state.tableDataOne,
                     [action.payload.name]: action.payload.deepName.length
                         ? {[action.payload.deepName]: action.payload.val}
                         : action.payload.val
@@ -45,7 +45,7 @@ const dataTableReducer = (
         case DataTableActionTypes.TABLE_ONE_EL:
             return {
                 ...state,
-                tableDate: {...action.payload}
+                tableDataOne: {...action.payload}
             }
         default:
             return state

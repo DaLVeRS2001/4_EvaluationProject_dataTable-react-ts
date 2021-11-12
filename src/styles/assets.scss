@@ -1,3 +1,10 @@
+%hiddenText {
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
 @mixin flex($df, $ai, $jc, $fd){
   display: $df;
   align-items: $ai;

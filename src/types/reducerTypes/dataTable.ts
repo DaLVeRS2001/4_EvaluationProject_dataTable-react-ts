@@ -1,8 +1,9 @@
 
 
 //ALIASES
-export type TableDataStatus = 'Новое' | 'Выполняется' | 'Назначено' | 'Отменено' | ''
-export type TableData = {
+export type TableDataOneStatus = 'Новое' | 'Выполняется' | 'Назначено' | 'Отменено' | ''
+export type TableDataKeys = ['date', 'aboutTask', 'aboutAccount', 'status']
+export type TableDataOne = {
     date: {
         number: `№${string}` | ''
         date: Date
@@ -15,13 +16,13 @@ export type TableData = {
         account: string,
         terminal: string
     }
-    status: TableDataStatus
+    status: TableDataOneStatus
 }
 
 //RootState
 export interface IDataTableState{
-    tableDate: TableData
-    tableDates: TableData[]
+    tableDataOne: TableDataOne
+    tableData: TableDataOne[]
 }
 
 //ENUMS
@@ -32,29 +33,31 @@ export enum DataTableActionTypes{
 }
 
 //ACTIONS
-export interface ITableDataAction{
+export interface ITableDataOneAction{
     type: DataTableActionTypes.TABLE_DATES
-    payload: TableData[]
+    payload: TableDataOne[]
 }
 
 export interface ITableOneElAction{
     type: DataTableActionTypes.TABLE_ONE_EL
-    payload: TableData
+    payload: TableDataOne
 }
 
 export interface IChangeFieldAction<T>{
     type: DataTableActionTypes.CHANGE_FIELD
     payload: {
-        name: keyof TableData
+        name: keyof TableDataOne
         deepName: string
         val: T
     }
 }
 
 //RootActionsType
-export type DataTableActions = ITableDataAction | ITableOneElAction
+export type DataTableActions = ITableDataOneAction | ITableOneElAction
 
 //CONNECT STATES
-
+export interface IDataTableConnect{
+    tableData: TableDataOne[]
+}
 //ACTION-CREATORS
 

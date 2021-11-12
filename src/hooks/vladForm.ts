@@ -71,7 +71,7 @@ export const useVladForm = (
 
 	return {
 		servErr: [serverError, setServerError],
-		vErrors: 	rerender>1 || submitCount > 0
+		vErrors: rerender>1 || submitCount > 0
 			? Object.fromEntries(fieldErrors)
 			: emptyFields,
 		handleSub, errorReset,

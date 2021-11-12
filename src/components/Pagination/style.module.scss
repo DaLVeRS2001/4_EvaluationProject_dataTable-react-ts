@@ -1,0 +1,124 @@
+@import "../../styles/assets";
+@import "../../styles/media";
+
+
+.pagination {
+  $customBorder: .5px solid grey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  margin-top: 30px;
+  img{
+    width: 22px;
+    height: 22px;
+
+  }
+  span {}
+  & span:nth-child(1n){
+    margin: 0 20px;
+  }
+
+  &__pageSwitcher {
+    display: flex;
+    align-items: center;
+    border: $customBorder;
+    border-radius: 5px;
+    height: 40px;
+
+
+
+
+    & div:nth-child(1n){
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      height: 100%;
+      &:not(:nth-child(3)){
+        width: 35px;
+      }
+    }
+
+    .pagination__first {
+      border-right: $customBorder;
+    }
+
+    .pagination__prev {
+      border-left: $customBorder;
+      transform: scale(-1);
+      img{
+        width: 17px;
+        height: 17px;
+      }
+    }
+    .pagination__page {
+      border-right: $customBorder;
+      width: 100px;
+      color: dodgerblue;
+    }
+
+    .pagination__next {
+      border-right: $customBorder;
+      img{
+        width: 17px;
+        height: 17px;
+      }
+    }
+
+
+    .pagination__last {
+      transform: scale(-1);
+    }
+  }
+
+  &__elemCountDrop {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+
+
+    .pagination__dropControl {
+      display: flex;
+      height: 40px;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5px;
+
+      border: $customBorder;
+      border-radius: 5px;
+      width: 55px;
+
+      span {
+        margin: 0;
+        color: dodgerblue;
+      }
+      img {
+        width: 17px;
+        height: 17px;
+        margin-top: 3px;
+      }
+    }
+    .pagination__dropItems {
+      border: $customBorder;
+      border-radius: 5px;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+
+
+
+      div {
+        padding: 5px;
+        cursor: pointer;
+
+        &:hover{
+          background: #bad7f3;;
+        }
+      }
+    }
+  }
+}

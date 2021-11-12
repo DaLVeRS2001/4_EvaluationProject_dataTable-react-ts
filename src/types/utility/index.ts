@@ -1,4 +1,4 @@
-import {TableDataStatus} from "../reducerTypes/dataTable";
+import {TableDataOneStatus} from "../reducerTypes/dataTable";
 
 export type CorrectRequest<T> = T extends "post" | "put" ? {url: string, method: T , body: any}
     :  (T extends "get" | "delete" ?  {url: string, method: T}
@@ -7,4 +7,4 @@ export type CorrectRequest<T> = T extends "post" | "put" ? {url: string, method:
 export type ChangeFieldValue<T> =
     T extends 'number' ? `№${string}`:
         T extends 'date' ?  Date :
-            T extends 'status' ? TableDataStatus : string
+            T extends 'status' ? TableDataOneStatus : string

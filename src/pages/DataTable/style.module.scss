@@ -1,5 +1,55 @@
-.dataTable{
-  .ke{
+@import "../../styles/assets";
+@import "../../styles/media";
 
+
+.table{
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  tr{
+    border-bottom: .5px solid gray;
+  }
+
+  thead{
+    tr{
+
+
+      th{
+        padding: 0 100px 10px 5px;
+        color: gray;
+        &:nth-child(4){
+          text-align: center;
+          padding-right: 5px;
+        }
+      }
+    }
+  }
+  tbody{
+
+    tr{
+      cursor: pointer;
+      td{
+
+        margin: 20px 5px;
+        &:nth-child(4){
+          display: flex;
+          justify-content: center
+        }
+        span{
+          @extend %hiddenText;
+
+          &:nth-child(2){
+            color: gray;
+          }
+        }
+        div{
+          color: white;
+          font-weight: bold;
+          padding: 5px 10px;
+          border-radius: 5px;
+        }
+
+      }
+    }
   }
 }
