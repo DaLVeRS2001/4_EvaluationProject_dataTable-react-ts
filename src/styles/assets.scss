@@ -1,0 +1,31 @@
+@mixin flex($df, $ai, $jc, $fd){
+  display: $df;
+  align-items: $ai;
+  justify-content: $jc;
+  flex-direction: $fd;
+}
+
+@mixin makeLightText($fs, $fw, $c){
+  font-size: $fs;
+  font-weight: $fw;
+  color: $c;
+}
+
+@mixin scale($w, $h){
+  width: $w;
+  height: $h;
+}
+
+@mixin gridTemplate($dg, $gtr, $gtc, $grg,$gcg){
+  display: $dg;
+  grid-template-rows: $gtr;
+  grid-template-columns: $gtc;
+  grid-row-gap: $grg;
+  grid-column-gap: $gcg;
+}
+
+@mixin toPosition($p, $t, $r, $b, $l, $z){
+  position: $p;
+  top: $t; right: $r; bottom: $b; left: $l;
+  z-index: $z;
+}

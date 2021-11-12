@@ -1,0 +1,4 @@
+//DataTable
+export interface IDataTable {
+
+}
