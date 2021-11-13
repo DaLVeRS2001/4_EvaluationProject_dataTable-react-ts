@@ -20,7 +20,7 @@ const initialState: IDataTableState = {
         },
         status: ''
     },
-    tableData: []
+    tableData: [],
 }
 
 const dataTableReducer = (
@@ -51,6 +51,5 @@ const dataTableReducer = (
             return state
     }
 }
-
 
 export default dataTableReducer

@@ -4,16 +4,12 @@
 
 .table{
   width: 100%;
-  border-collapse: collapse;
   text-align: left;
-  tr{
-    border-bottom: .5px solid gray;
-  }
+  border-collapse: collapse;
+  tr{ border-bottom: .5px solid gray }
 
   thead{
     tr{
-
-
       th{
         padding: 0 100px 10px 5px;
         color: gray;
@@ -24,31 +20,23 @@
       }
     }
   }
-  tbody{
 
-    tr{
+  tbody {
+    tr {
       cursor: pointer;
-      td{
-
+      td {
         margin: 20px 5px;
-        &:nth-child(4){
-          display: flex;
-          justify-content: center
-        }
-        span{
+        &:nth-child(4) { @include flex(flex, null, center, null) }
+        span {
           @extend %hiddenText;
-
-          &:nth-child(2){
-            color: gray;
-          }
+          &:nth-child(2) { color: gray }
         }
-        div{
-          color: white;
+        div {
+          border-radius: 5px;
           font-weight: bold;
           padding: 5px 10px;
-          border-radius: 5px;
+          color: white;
         }
-
       }
     }
   }

@@ -1,4 +1,4 @@
-
+import {TPagination} from "./pagination";
 
 //ALIASES
 export type TableDataOneStatus = 'Новое' | 'Выполняется' | 'Назначено' | 'Отменено' | ''
@@ -37,12 +37,10 @@ export interface ITableDataOneAction{
     type: DataTableActionTypes.TABLE_DATES
     payload: TableDataOne[]
 }
-
 export interface ITableOneElAction{
     type: DataTableActionTypes.TABLE_ONE_EL
     payload: TableDataOne
 }
-
 export interface IChangeFieldAction<T>{
     type: DataTableActionTypes.CHANGE_FIELD
     payload: {
@@ -58,6 +56,5 @@ export type DataTableActions = ITableDataOneAction | ITableOneElAction
 //CONNECT STATES
 export interface IDataTableConnect{
     tableData: TableDataOne[]
+    pagination: TPagination
 }
-//ACTION-CREATORS
-

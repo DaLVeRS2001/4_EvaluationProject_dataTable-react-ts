@@ -1,4 +1,6 @@
 import {Dispatch} from "redux";
+import dataTableApi from "../../API/dataTable";
+
 import {
     DataTableActions,
     DataTableActionTypes,
@@ -6,7 +8,6 @@ import {
     TableDataOne
 } from "../../types/reducerTypes/dataTable";
 import {TDefaultAC} from "../../types/#common";
-import dataTableApi from "../../API/dataTable";
 import {ChangeFieldValue} from "../../types/utility";
 
 

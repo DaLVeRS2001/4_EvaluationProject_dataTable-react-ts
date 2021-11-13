@@ -1,84 +1,108 @@
-import React, {useState} from "react";
+//Other
+import React, {useEffect, useState} from "react";
+
+//style
 import pS from "./style.module.scss"
-import dblArrow from "../../assets/dblArrow.png"
-import arrow from "../../assets/arrow.png"
-import dropArrow from "../../assets/downArrow.png"
+
+//redux
+import {connect} from "react-redux";
+import {RootReducers} from "../../redux/reducers";
+import {IPaginationConnect} from "../../types/reducerTypes/pagination";
+import {setCurrentPage, setElemsCountShown} from "../../redux/thunks/paginationActions";
+
+//types
+import {IPagination, TPageSwitchers} from "../../types/props";
+
+//assets
+import dblArrow from "./assets/dblArrow.png"
+import arrow from "./assets/arrow.png"
+import dropArrow from "./assets/downArrow.png"
+import arrowBlue from "./assets/arrowBlue.png"
+import dblArrowBlue from "./assets/dblArrowBlue.png"
 
 
-interface IPagination {
-    arr: any
-}
-
-const Pagination: React.FC<IPagination> = ({arr}) => {
 
 
-    const [elemCount, setElemCount] = useState(25),
-        [currentPage, setCurrentPage] = useState(1),
-        [pagination, updatePagination] = useState({
-            from: elemCount * (currentPage - 1), to: elemCount * currentPage
-        }),
-        pagesCount = Math.ceil(arr.length / elemCount),
-        [isOpenDrop, setDrop] = useState(false)
+const Pagination: React.FC<IPagination> =
+    ({arrL, pagination,setCurrentPage, setElemsCountShown}) => {
 
+    const {elemCountShown, currentPage, from, to} = pagination,
+        pagesCount: number = Math.ceil(arrL / elemCountShown),
+        [isOpenDrop, setDrop] = useState<boolean>(false);
 
+    const elemsCountShownArr: number[] = [25, 50, 75],
+        pConditions: boolean[] = [currentPage < pagesCount, currentPage > 1],
+        arrowConditions: string[] = [
+            pConditions[0]?arrowBlue:arrow, pConditions[0]?dblArrowBlue:dblArrow,
+            pConditions[1]?arrowBlue:arrow, pConditions[1]?dblArrowBlue:dblArrow
+        ],
+        pageSwitchers: TPageSwitchers = {
+            page: <div className={pS.pagination__page}><span>{currentPage}</span></div>,
+            switchers: [
+                {type: 'first', src: arrowConditions[3], alt: '<<'}, {type: 'prev', src: arrowConditions[2], alt: '<'},
+                {type: 'next', src: arrowConditions[0], alt: '>'}, {type: 'last', src: arrowConditions[1], alt: '>>'}
+            ]
+        };
 
     const handler = (actionType: 'prev' | 'next' | 'first' | 'last'): void => {
         switch (actionType){
             case "first":
-                setCurrentPage(1)
+                pConditions[1] && setCurrentPage(1)
                 break;
             case "last":
-                setCurrentPage(pagesCount)
+                pConditions[0] && setCurrentPage(pagesCount)
                 break;
             case "next":
-                setCurrentPage(currentPage+1)
+                pConditions[0] && setCurrentPage(currentPage+1)
                 break;
             case "prev":
-                setCurrentPage(currentPage-1)
+                pConditions[1] && setCurrentPage(currentPage-1)
                 break
         }
     }
 
-    const onDropdown = (elemCount: number): void => {
-        setElemCount(75)
+    const onDropdown = (elemCountShown: number): void => {
+        setElemsCountShown(elemCountShown)
         setDrop(!isOpenDrop)
     }
 
+    useEffect(() => {
+        setCurrentPage(1)
+        setElemsCountShown(elemCountShown)
+        //eslint-disable-next-line
+    }, [])
 
+    return <div className={pS.pagination}>
+        <span>записи {from + 1}-{to}</span>
 
-        return <div className={pS.pagination}>
-
-            <span>записи {pagination.from+1}-{pagination.to}</span>
-            <div className={pS.pagination__pageSwitcher}>
-              <div className={pS.pagination__first}>
-                  <img alt='<<' src={dblArrow} />
-              </div>
-                <div className={pS.pagination__prev}>
-                    <img alt='<' src={arrow} />
+        <div className={pS.pagination__pageSwitcher}>
+            {pageSwitchers.switchers.map((el, idx)=> <React.Fragment  key={idx}>
+                <div className={pS[`pagination__${el.type}`]} onClick={() => handler(el.type)}>
+                    <img alt={el.alt} src={el.src}/>
                 </div>
-                <div className={pS.pagination__page}><span>{currentPage}</span></div>
-                <div className={pS.pagination__next}>
-                    <img alt='>' src={arrow} />
-                </div>
-                <div className={pS.pagination__last}>
-                    <img alt='>>' src={dblArrow} />
-                </div>
-            </div>
-            <span>по</span>
-            <div className={pS.pagination__elemCountDrop}>
-                <div className={pS.pagination__dropControl} onClick={()=> setDrop(!isOpenDrop)}>
-                    <span>{elemCount}</span>
-                    <img src={dropArrow} alt="↓" style={isOpenDrop ? {transform: "scale(-1)"}: {}}/>
-                </div>
-                <div className={pS.pagination__dropItems} hidden={!isOpenDrop}>
-                    <div onClick={()=> setElemCount(25)}>25</div>
-                    <div onClick={()=> setElemCount(50)}>50</div>
-                    <div onClick={()=> setElemCount(75)}>75</div>
-                </div>
-            </div>
-            <span>записей</span>
+                {idx === 1 && pageSwitchers.page}
+            </React.Fragment>)}
         </div>
+
+        <span>по</span>
+
+        <div className={pS.pagination__elemCountDrop}>
+            <div className={pS.pagination__dropControl} onClick={() => setDrop(!isOpenDrop)}>
+                <span>{elemCountShown}</span>
+                <img src={dropArrow} alt="↓" style={isOpenDrop ? {transform: "scale(-1)"} : {}}/>
+            </div>
+            <div className={pS.pagination__dropItems} hidden={!isOpenDrop}>
+                {elemsCountShownArr.map((el, idx)=>
+                    <div key={idx} onClick={() => onDropdown(el)}>{el}</div>)}
+            </div>
+        </div>
+
+        <span>записей</span>
+    </div>
 }
 
+const mapStateToProps = (state: RootReducers): IPaginationConnect => ({
+    pagination: state.pagination.pagination
+})
 
-export default Pagination
+export default connect(mapStateToProps, {setCurrentPage, setElemsCountShown})(Pagination)

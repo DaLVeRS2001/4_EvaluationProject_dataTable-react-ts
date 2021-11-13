@@ -1,6 +1,5 @@
 import {CertainModel, ICertainData} from "../types/services";
 
-
 class CertainData implements ICertainData{
     private _model: CertainModel = {
         tableHeaders: ['Номер / Дата', 'Тип задания / Автор', 'Аккаунт / Терминал', 'Статус'],
