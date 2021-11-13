@@ -1,0 +1,50 @@
+@import "../../../styles/assets";
+@import "../../../styles/media";
+
+
+.customModal{
+  @include customModalMedia();
+  @include toPosition(absolute, 0, null, null, 0, 100);
+  @include flex(flex, center, center, null);
+  background: rgba(255, 255, 255, 0.75);
+  @include scale(100%, 100%);
+  min-height: 100vh;
+  text-align: center;
+
+  &__inner{
+    width: 100%;
+    max-width: 660px;
+    min-width: 200px;
+    border-radius: 15px;
+    background: #F5E6FE;
+    margin: 0 50px;
+
+    header{
+      @include flex(flex, null, center, null);
+      border-bottom: 1px solid white;
+      position: relative;
+      padding: 25px 10px;
+
+      img {
+        width: 2.2vw;
+        min-width: 16px;
+        max-width: 30px;
+        position: absolute;
+        cursor: pointer;
+        right: 15px;
+      }
+    }
+
+    main{
+      border-bottom: 1px solid white;
+      font-size: 22px;
+      padding: 45px 0;
+      margin: 0;
+    }
+
+    footer{
+      padding: 25px 0;
+      @include customBtn(20px, #fff, #235490, 10px, 8px 90px);
+    }
+  }
+}

@@ -39,13 +39,13 @@ export const useVladForm = (
 			!Object.fromEntries(fieldErrors)[key].length)
 				? setFormValid(true)
 				: setFormValid(false)
-
-
+		//eslint-disable-next-line
 	},[...values, submitCount, isSubmit, ...additionalDependencies])
 
 	useEffect(()=> {
 		setSubmit(false)
 		setServerError(null)
+		//eslint-disable-next-line
 	}, [...values])
 
 	const handleSub = (e: React.FormEvent, onSubmit: (arg?: Event)=> void) => {
@@ -59,11 +59,13 @@ export const useVladForm = (
 
 	const errorReset = (inputNames: string[] = []) => {
 		if(inputNames[0] === 'all'){
-			fieldKeys.map((input, idx) => {
+			//eslint-disable-next-line
+			fieldKeys.map((input) => {
 				fieldErrors.set(input, [])
 			})
 		}else{
-			inputNames.map((input, idx) => {
+			//eslint-disable-next-line
+			inputNames.map((input) => {
 				fieldErrors.set(input, [])
 			})
 		}

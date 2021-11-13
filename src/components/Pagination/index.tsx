@@ -22,7 +22,6 @@ import dblArrowBlue from "./assets/dblArrowBlue.png"
 
 
 
-
 const Pagination: React.FC<IPagination> =
     ({arrL, pagination,setCurrentPage, setElemsCountShown}) => {
 

@@ -5,6 +5,6 @@ export type CorrectRequest<T> = T extends "post" | "put" ? {url: string, method:
         : never)
 
 export type ChangeFieldValue<T> =
-    T extends 'number' ? `№${string}`:
+    T extends 'number' ? `№${string}` | '':
         T extends 'date' ?  Date :
             T extends 'status' ? TableDataOneStatus : string

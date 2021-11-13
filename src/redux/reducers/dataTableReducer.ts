@@ -8,7 +8,7 @@ const initialState: IDataTableState = {
     tableDataOne: {
         date: {
             number: '',
-            date: new Date()
+            date: ''
         },
         aboutTask: {
             taskType: '',
@@ -18,34 +18,42 @@ const initialState: IDataTableState = {
             account: '',
             terminal: ''
         },
-        status: ''
+        status: 'Новое',
+        id: null
     },
     tableData: [],
 }
 
 const dataTableReducer = (
-    state = initialState, action: DataTableActions | IChangeFieldAction<string>
+    state = initialState, action: DataTableActions | IChangeFieldAction
 ): IDataTableState => {
     switch (action.type) {
         case DataTableActionTypes.TABLE_DATES:
             return {
                 ...state,
-                tableData: [...action.payload]
-            }
-        case DataTableActionTypes.CHANGE_FIELD:
-            return {
-                ...state,
-                tableDataOne: {
-                    ...state.tableDataOne,
-                    [action.payload.name]: action.payload.deepName.length
-                        ? {[action.payload.deepName]: action.payload.val}
-                        : action.payload.val
-                }
+                tableData: [...action.payload].reverse()
             }
         case DataTableActionTypes.TABLE_ONE_EL:
             return {
                 ...state,
                 tableDataOne: {...action.payload}
+            }
+        case DataTableActionTypes.CLEAR_TABLE_FIELDS:
+            return {
+                ...state,
+                tableDataOne: {...initialState.tableDataOne}
+            }
+        case DataTableActionTypes.CHANGE_FIELD:
+
+            return {
+                ...state,
+                tableDataOne: {
+                    ...state.tableDataOne,
+                    [action.payload.name]: action.payload.deepName
+                        // @ts-ignore
+                        ? {...state.tableDataOne[action.payload.name], [action.payload.deepName]: action.payload.val}
+                        : action.payload.val
+                }
             }
         default:
             return state

@@ -14,6 +14,9 @@ const dataTableApi: IDataTableApi = {
     changeOne(body, id){
         return makeRequest<"put">({url: "TableData/"+id, method: "put", body})
     },
+    addOne(body){
+        return makeRequest<"post">({url: "TableData", method: "post", body})
+    },
 }
 
 

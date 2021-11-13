@@ -1,0 +1,31 @@
+@import "../../../styles/assets";
+@import "../../../styles/media";
+
+
+.drop{
+  @include scale(69%, null);
+  border: 1px solid blue;
+  border-radius: 10px;
+  background: #ffffff;
+  position: absolute;
+  right: 0;
+  color: blue;
+  overflow: hidden;
+  div{
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+}
+
+form{
+  display: contents;
+    main{
+      @extend %inlineWrapper;
+      input{
+        width: 300px;
+        font-size: 18px;
+      }
+    }
+
+  @include addItemModalMedia();
+}

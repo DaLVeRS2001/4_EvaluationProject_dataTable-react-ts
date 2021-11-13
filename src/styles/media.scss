@@ -1,0 +1,53 @@
+@import "./assets";
+
+$max-width1: 900px;
+$max-width2: 670px;
+$max-width3: 400px;
+
+
+@mixin customModalMedia() {
+  @media(max-width: $max-width1) {
+    .customModal__inner{
+      header{font-size: 13px}
+      main{
+        font-size: 19px;
+      }
+      footer{ @include customBtn(16px, #fff, #235490, 10px, 8px 80px) }
+    }
+  }
+  @media(max-width: $max-width2) {
+    .customModal__inner{
+      max-width: 350px;
+      header{
+        font-size: 10px;
+        img{top: 10px}
+      }
+      main{font-size: 16px;}
+      footer{ @include customBtn(13px, #fff, #235490, 10px, 8px 60px) }
+    }
+  }
+  @media(max-width: $max-width3) {
+    .customModal__inner{
+      footer{ @include customBtn(12px, #fff, #235490, 10px, 8px 30px) }
+    }
+  }
+}
+
+@mixin addItemModalMedia() {
+  @media(max-width: $max-width1) {
+    main{ input{width: 250px; font-size: 16px} }
+  }
+  @media(max-width: $max-width2) {
+    main {
+      input {
+        display: flex;
+        width: 230px;
+        font-size: 13px;
+      }
+      br {display: none}
+    }
+  }
+  @media(max-width: $max-width3) {
+    main { input {width: 160px} }
+  }
+}

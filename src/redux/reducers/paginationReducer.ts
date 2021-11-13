@@ -5,7 +5,7 @@ const initialState: IPaginationState = {
     pagination: {
         elemCountShown: 25,
         currentPage: 1,
-        from: 1,
+        from: 0,
         to: 25
     }
 }

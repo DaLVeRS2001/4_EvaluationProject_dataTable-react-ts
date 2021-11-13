@@ -5,4 +5,5 @@ export interface IDataTableApi{
     getOne: (id: number) => Promise<TableDataOne>
     deleteOne: (id: number) => Promise<void>
     changeOne: (body: TableDataOne, id: number) => Promise<void>
+    addOne: (body: TableDataOne) => Promise<void>
 }

@@ -1,12 +1,15 @@
 import {TPagination} from "./pagination";
+import {ChangeFieldValue} from "../utility";
+import {Dispatch} from "redux";
 
 //ALIASES
 export type TableDataOneStatus = 'Новое' | 'Выполняется' | 'Назначено' | 'Отменено' | ''
 export type TableDataKeys = ['date', 'aboutTask', 'aboutAccount', 'status']
+export type TableDataDeepKeys = 'number' | 'date' | 'taskType' | 'author' | 'account' | 'terminal'
 export type TableDataOne = {
     date: {
         number: `№${string}` | ''
-        date: Date
+        date: Date |  string
     }
     aboutTask: {
         taskType: string
@@ -17,6 +20,7 @@ export type TableDataOne = {
         terminal: string
     }
     status: TableDataOneStatus
+    id?: number | null
 }
 
 //RootState
@@ -29,7 +33,8 @@ export interface IDataTableState{
 export enum DataTableActionTypes{
     TABLE_DATES= 'TABLE_DATES',
     CHANGE_FIELD= 'CHANGE_FIELD',
-    TABLE_ONE_EL= 'TABLE_ONE_EL'
+    TABLE_ONE_EL= 'TABLE_ONE_EL',
+    CLEAR_TABLE_FIELDS='CLEAR_TABLE_FIELDS'
 }
 
 //ACTIONS
@@ -41,20 +46,31 @@ export interface ITableOneElAction{
     type: DataTableActionTypes.TABLE_ONE_EL
     payload: TableDataOne
 }
-export interface IChangeFieldAction<T>{
+export interface IClearTableFieldsAction{
+    type: DataTableActionTypes.CLEAR_TABLE_FIELDS
+}
+export interface IChangeFieldAction{
     type: DataTableActionTypes.CHANGE_FIELD
     payload: {
         name: keyof TableDataOne
-        deepName: string
-        val: T
+        deepName?: TableDataDeepKeys
+        val: any
     }
 }
 
 //RootActionsType
-export type DataTableActions = ITableDataOneAction | ITableOneElAction
+export type DataTableActions = ITableDataOneAction | ITableOneElAction | IClearTableFieldsAction
 
 //CONNECT STATES
 export interface IDataTableConnect{
     tableData: TableDataOne[]
     pagination: TPagination
+    currentPage: number
 }
+export interface IAddItemConnect{
+    tableDataOne: TableDataOne
+}
+
+//THUNKS
+export type TChangeField = <FieldName>(val: ChangeFieldValue<FieldName>, name: keyof TableDataOne, deepName?: TableDataDeepKeys) =>
+    (dispatch: Dispatch<IChangeFieldAction>) => void

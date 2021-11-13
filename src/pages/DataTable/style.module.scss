@@ -2,6 +2,23 @@
 @import "../../styles/media";
 
 
+.newEl{
+  transition: background .2s ease-in, box-shadow .2s ease-in;
+  display: inline-block;
+  border-radius: 10px;
+  background: #2134cd;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+
+  &:hover{
+    background: #a03528;
+    box-shadow: 3px 4px 7px #000;
+  }
+}
+
 .table{
   width: 100%;
   text-align: left;
