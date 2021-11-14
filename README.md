@@ -1,2 +1,4 @@
-# Учебный проект #5 на React.js + TypeScript (tsx) 
-#### ❌ The project is not an evaluation one. This is a TRAINING project. (Проект не является оценочным. Это УЧЕБНЫЙ проект) ❌
+# Оценочный проект #4 на React.js + Typescript (tsx)
+
+#### ✔ The project is an evaluation one. This is an EVALUATION project. (Проект является оценочным. Это ОЦЕНОЧНЫЙ проект) ✔
+##Start app: "npm run app"
