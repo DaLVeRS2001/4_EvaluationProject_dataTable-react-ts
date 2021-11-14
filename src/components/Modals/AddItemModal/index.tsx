@@ -1,6 +1,3 @@
-
-
-
 //Other
 import React, {useEffect, useState} from "react";
 import {useTableValidation} from "../../../hooks/useTableValidation";
@@ -103,9 +100,9 @@ const AddItemModal: React.FC<IAddItemModal> =
             >
                 <div className={studModalS.inlineWrapper}>
                     {modalFields.map((field, idx) => {
-                        return <div style={{position: "relative"}}>
+                        return <div key={idx} style={{position: "relative"}}>
                             <ModalInput
-                                key={idx} title={field.title} type={field.type} name={field.name} ph={field.ph}
+                                 title={field.title} type={field.type} name={field.name} ph={field.ph}
                                 value={field.value} handler={(arg) => field.handler(arg.val)}
                                 style={{marginBottom: 10}} fieldError={field.fieldError} onClick={field.onClick}
                             />

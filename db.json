@@ -14,38 +14,6 @@
         "terminal": "123"
       },
       "status": "Новое",
-      "id": 1
-    },
-    {
-      "date": {
-        "number": "79166596180",
-        "date": "2021-11-07"
-      },
-      "aboutTask": {
-        "taskType": "123",
-        "author": "123"
-      },
-      "aboutAccount": {
-        "account": "123",
-        "terminal": "123"
-      },
-      "status": "Новое",
-      "id": 2
-    },
-    {
-      "date": {
-        "number": "79166596180",
-        "date": "2021-11-07"
-      },
-      "aboutTask": {
-        "taskType": "123",
-        "author": "123"
-      },
-      "aboutAccount": {
-        "account": "123",
-        "terminal": "123"
-      },
-      "status": "Новое",
       "id": 3
     },
     {
@@ -370,22 +338,6 @@
     },
     {
       "date": {
-        "number": "79166596180",
-        "date": "2021-11-12"
-      },
-      "aboutTask": {
-        "taskType": "1231231",
-        "author": "2312312"
-      },
-      "aboutAccount": {
-        "account": "123",
-        "terminal": "123"
-      },
-      "status": "Назначено",
-      "id": 24
-    },
-    {
-      "date": {
         "number": "qqqqq2",
         "date": "2021-11-06"
       },
@@ -397,8 +349,56 @@
         "account": "123",
         "terminal": "2"
       },
-      "status": "Новое",
+      "status": "Отменено",
       "id": 25
+    },
+    {
+      "date": {
+        "number": "+7 984 848 48 48",
+        "date": "2021-11-04"
+      },
+      "aboutTask": {
+        "taskType": "1231231",
+        "author": "2312312"
+      },
+      "aboutAccount": {
+        "account": "123",
+        "terminal": "123"
+      },
+      "status": "Выполняется",
+      "id": 26
+    },
+    {
+      "date": {
+        "number": "+7 984 848 48 48",
+        "date": "2021-11-04"
+      },
+      "aboutTask": {
+        "taskType": "1231231",
+        "author": "2312312"
+      },
+      "aboutAccount": {
+        "account": "123",
+        "terminal": "123"
+      },
+      "status": "Новое",
+      "id": 27
+    },
+    {
+      "date": {
+        "number": "79166596180",
+        "date": "2021-11-06"
+      },
+      "aboutTask": {
+        "taskType": "1231231",
+        "author": "123"
+      },
+      "aboutAccount": {
+        "account": "312312",
+        "terminal": "123"
+      },
+      "status": "Новое",
+      "id": 28
     }
   ]
 }

@@ -66,6 +66,7 @@ export interface IDataTableConnect{
     tableData: TableDataOne[]
     pagination: TPagination
     currentPage: number
+    width: number
 }
 export interface IAddItemConnect{
     tableDataOne: TableDataOne

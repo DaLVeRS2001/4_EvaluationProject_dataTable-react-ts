@@ -20,6 +20,7 @@
 }
 
 .table{
+  @include tableMedia;
   width: 100%;
   text-align: left;
   border-collapse: collapse;

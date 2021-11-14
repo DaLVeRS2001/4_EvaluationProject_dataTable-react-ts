@@ -5,6 +5,38 @@ $max-width2: 670px;
 $max-width3: 400px;
 
 
+@mixin tableMedia() {
+  @media(max-width: $max-width2) {
+    tbody[data-main=true] {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: .5px solid gray;
+      tr {
+        border: none;
+        th {
+          display: flex;
+          margin-bottom: 20px;
+          border: none;
+        }
+        td {
+          display: flex;
+          justify-content: flex-end;
+          margin-bottom: 20px;
+          border: none;
+          div {
+            display: inline-block;
+            position: absolute;
+            right: 10px;
+          }
+          & span:nth-child(1){ margin-right: 10px }
+          img { margin-top: 25px }
+        }
+      }
+    }
+    tbody { tr { td { margin: 0 } } }
+  }
+}
+
 @mixin customModalMedia() {
   @media(max-width: $max-width1) {
     .customModal__inner{

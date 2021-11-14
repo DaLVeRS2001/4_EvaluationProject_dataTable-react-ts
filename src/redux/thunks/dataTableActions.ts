@@ -30,7 +30,6 @@ export const getAllTableData: TDefaultAC = () => (dispatch: Dispatch<DataTableAc
         dataTableApi.changeOne(body, id)
             .then(() => dispatch(getAllTableData()))
     },
-
     clearTableFields: TDefaultAC = () => (dispatch: Dispatch<DataTableActions>) => {
         dispatch({type: DataTableActionTypes.CLEAR_TABLE_FIELDS})
     },

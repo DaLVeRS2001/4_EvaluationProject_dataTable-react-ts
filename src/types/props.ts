@@ -9,6 +9,7 @@ export interface IDataTable {
     getAllTableData: ()=> void
     setCurrentPage: (page: number)=> void
     currentPage: number
+    width: number
     pagination: TPagination
     changeTableOneEl: (body: TableDataOne, id: number)=> void
 }
@@ -21,7 +22,8 @@ export interface IMyBody{
     currentPage: number
     tableData: TableDataOne[],
     from: number,
-    to: number
+    to: number,
+    width?: number
 }
 
 //Pagination
