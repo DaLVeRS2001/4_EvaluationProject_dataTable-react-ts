@@ -28,7 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "mock": "json-server db.json -p 3999 -d 500ms",
+    "mock": "json-server db.json -p 3999",
     "app": "concurrently \"npm run start\" \"npm run mock\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
